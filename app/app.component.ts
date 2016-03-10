@@ -7,6 +7,7 @@ import {HomeComponent} from './home/home.component';
 import {AccountService} from './services/account.service';
 import {BankerService} from './services/banker.service';
 import {LoginStateService} from './services/login-state.service';
+import {PropertiesService} from './services/properties.service';
 
 import {LoginComponent} from './login/login.component';
 import {BankerloginComponent} from './bankerlogin/bankerlogin.component';
@@ -21,7 +22,7 @@ import {LoginInfo} from './models/login-info';
     selector: 'my-app',
     templateUrl: '/app/app.component.html',
     directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault, ROUTER_DIRECTIVES],
-    providers: [AccountService, BankerService, LoginStateService]
+    providers: [AccountService, BankerService, LoginStateService, PropertiesService]
 })
 
 @RouteConfig([

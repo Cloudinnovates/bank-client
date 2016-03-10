@@ -6,12 +6,15 @@ import {LoginInfo} from '../models/login-info';
 import {Observable}     from 'rxjs/Observable';
 
 import {LoginStateService} from '../services/login-state.service';
+import {PropertiesService} from './properties.service';
 
 @Injectable()
 export class BankerService {
 
 
-	constructor(private http: Http,private _loginStateService: LoginStateService) {
+	constructor(private http: Http,
+		private _loginStateService: LoginStateService,
+		private _propertiesService: PropertiesService) {
 		// TODO: Use official Angular2 CORS support when merged (https://github.com/angular/angular/issues/4231).
 		let _build = (<any>http)._backend._browserXHR.build;
 		(<any>http)._backend._browserXHR.build = () => {
@@ -20,10 +23,12 @@ export class BankerService {
 			return _xhr;
 		};
 
+		this._accountLoginUrl = _propertiesService.url + '/bankersession';
+		this._createAccountUrl = _propertiesService.url + '/accounts';
 	}
 
-	private _accountLoginUrl = 'http://localhost:8888/api/bankersession';
-	private _createAccountUrl = 'http://localhost:8888/api/accounts'
+	private _accountLoginUrl: string;
+	private _createAccountUrl: string;
 
 	login(username: String, password: String) {
 		var url = this._accountLoginUrl;

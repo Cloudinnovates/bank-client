@@ -6,13 +6,16 @@ import {LoginInfo} from '../models/login-info';
 import {Info} from '../models/info';
 import {Observable}     from 'rxjs/Observable';
 
-import {LoginStateService} from '../services/login-state.service';
+import {LoginStateService} from './login-state.service';
+import {PropertiesService} from './properties.service';
 
 @Injectable()
 export class AccountService {
 
 
-	constructor(private http: Http,private _loginStateService: LoginStateService) {
+	constructor(private http: Http,
+		private _loginStateService: LoginStateService, 
+		private _propertiesService: PropertiesService ) {
 		// TODO: Use official Angular2 CORS support when merged (https://github.com/angular/angular/issues/4231).
 		let _build = (<any>http)._backend._browserXHR.build;
 		(<any>http)._backend._browserXHR.build = () => {
@@ -21,12 +24,16 @@ export class AccountService {
 			return _xhr;
 		};
 
+		this._accountUrl = this._propertiesService.url + '/accounts/';
+		this._accountLoginUrl = this._propertiesService.url + '/clientsession';
+		this._accountTransfertUrl = this._propertiesService.url + '/transfer';
 	}
-	private _accountUrl = 'http://localhost:8888/api/accounts/';  // URL to web api
-	private _accountLoginUrl = 'http://localhost:8888/api/clientsession'; 
-	private _accountTransfertUrl = 'http://localhost:8888/api/transfer'; 
 
-	getAccountDetail(accountId: String) {
+	private _accountUrl: string;
+	private _accountLoginUrl: string;
+	private _accountTransfertUrl: string;
+
+	getAccountDetail(accountId: string) {
 		let url = this._accountUrl + accountId;
 		
 		return this.http.get(url)
@@ -90,7 +97,7 @@ export class AccountService {
 		// in a real world app, we may send the error to some remote logging infrastructure
 		// instead of just logging it to the console
 		console.log(error);
-		return Observable.throw(error._body || 'Server error');
+		return Observable.throw(error.text() || 'Server error');
 	}
 
 }
