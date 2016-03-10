@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="alert alert-danger" *ngIf="errorMessage">
+	  <strong>Erreur : </strong> {{errorMessage}}
+	</div>
+	<div *ngIf="accountOverview">
+		<p>Account average : {{accountOverview.average}}</p>
+		<table class="table table-striped" *ngIf="accountOverview.accountsUnder100">
+			<thead>
+		      <tr>
+		        <th>Accounts with less than 100€</th>
+		      </tr>
+		    </thead>
+			<tr *ngFor="#accountUnder100 of accountOverview.accountsUnder100">
+				<td>{{accountUnder100}}</td>
+			</tr>
+		</table>
+
+		<table class="table table-striped" *ngIf="accountOverview.accountsTransactionOver5000">
+			<thead>
+		      <tr>
+		        <th>Accounts with transactions over 5000€ this last 24h</th>
+		      </tr>
+		    </thead>
+			<tr *ngFor="#accountTransactionOver5000 of accountOverview.accountsTransactionOver5000">
+				<td>{{accountTransactionOver5000}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

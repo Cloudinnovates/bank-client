@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="alert alert-danger" *ngIf="errorMessage">
+	  <strong>Erreur : </strong> {{errorMessage}}
+	</div>
+	<div class="alert alert-success" *ngIf="info">
+	  <strong>Transfer done : </strong> {{info.message}}
+	</div>
+	<h2>Transfer</h2>
+	<form role="form" (ngSubmit)="transfer()">
+		<div class="form-group">
+			<label for="target">Account number :</label>
+			<input type="text" id="target" class="form-control" [(ngModel)]="target" placeholder="The target account">
+		</div>
+		<div class="form-group">
+			<label for="amount">Amount :</label>
+			<input type="text" id="amount" class="form-control" [(ngModel)]="amount" 
+			placeholder="The amount (you can't send more than you have)">
+		</div>
+
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>

@@ -1,0 +1,27 @@
+ 
+ <header class="page-header">
+ 	<nav class="navbar navbar-default">
+ 		<div class="container-fluid">
+ 			<div class="navbar-header">
+ 				<a class="navbar-brand" href="#">Bank</a>
+ 			</div>
+ 			<div  [ngSwitch]="isLogin">
+ 				<ul class="nav navbar-nav"  *ngSwitchWhen="'false'">
+ 					<li><a [routerLink]="['Login']">Login as client</a></li>
+ 					<li><a [routerLink]="['Bankerlogin']">Login as banker</a></li>
+ 					<li><a [routerLink]="['AccountDetail']">Account detail</a></li>
+ 				</ul>
+ 				<ul class="nav navbar-nav"  *ngSwitchWhen="'client'">
+ 					<li><a [routerLink]="['AccountDetail']">Account detail</a></li>
+ 					<li><a [routerLink]="['Login']">Logout</a></li>
+ 					<li><a >Transfer</a></li>
+ 				</ul>
+ 				<ul class="nav navbar-nav"  *ngSwitchWhen="'banker'">
+ 					<li><a [routerLink]="['Login']">Logout</a></li>
+ 					<li><a >Accounts overview</a></li>
+ 				</ul>
+ 			</div>
+ 		</div>
+	</nav>
+ </header>	
+ Is login : {{isLogin}}

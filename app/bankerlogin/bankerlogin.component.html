@@ -1,0 +1,18 @@
+<div class="container">
+<div class="alert alert-danger" *ngIf="errorMessage">
+  <strong>Error : </strong> {{errorMessage}}
+</div>
+<h2>Login to banker account</h2>
+	<form role="form" (ngSubmit)="login()">
+		<div class="form-group">
+			<label for="title">Login</label>
+			<input type="text" id="title" class="form-control" [(ngModel)]="username" placeholder="Your account number">
+		</div>
+		<div class="form-group">
+			<label for="password">Password :</label>
+			<input type="password" id="password" class="form-control" [(ngModel)]="password" placeholder="Account password">
+		</div>
+
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>

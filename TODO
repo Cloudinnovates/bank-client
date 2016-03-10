@@ -1,0 +1,9 @@
+- An common error handler with list of messages that you can remove
+- Verifications of forms before send it
+- Supress error messages when needed
+- Refactor projet hierarchie
+- https
+- Set a properties service (including website url)
+- handleErrorService
+- keep login when reloading page
+- Redirect when access to a page if not allowed

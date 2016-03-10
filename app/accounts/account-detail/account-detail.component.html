@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="alert alert-danger" *ngIf="errorMessage">
+	  <strong>Erreur : </strong> {{errorMessage}}
+	</div>
+	<div *ngIf="accountDetail">
+		<p>Account Detail : {{accountDetail.balance}}</p>
+		<table class="table table-striped" *ngIf="accountDetail.transactions">
+			<thead>
+		      <tr>
+		        <th>From</th>
+		        <th>To</th>
+		        <th>Amount</th>
+		      </tr>
+		    </thead>
+			<tr *ngFor="#transaction of accountDetail.transactions">
+				<td>{{transaction.from}}</td>
+				<td>{{transaction.to}}</td>
+				<td>{{transaction.amount}}</td>
+			</tr>
+		</table>
+		
+		
+	</div>
+</div>
