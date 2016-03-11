@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {AccountService} from '../services/account.service';
-import {LoginInfo} from '../models/login-info';
-import {State} from '../models/state';
+import {AccountService} from '../../services/account.service';
+import {LoginInfo} from '../../models/login-info';
+import {State} from '../../models/state';
 @Component({
-    templateUrl: '/app/login/login.component.html'
+    templateUrl: '/app/components/login/login.component.html'
 }) 
 export class LoginComponent {
 

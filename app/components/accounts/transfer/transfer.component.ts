@@ -1,10 +1,10 @@
 import {Component, OnInit} from 'angular2/core';
-import {AccountService} from '../../services/account.service';
-import {LoginStateService} from '../../services/login-state.service';
-import {Info} from '../../models/info';
+import {AccountService} from '../../../services/account.service';
+import {LoginStateService} from '../../../services/login-state.service';
+import {Info} from '../../../models/info';
 
 @Component({
-	templateUrl: '/app/accounts/transfer/transfer.component.html'
+	templateUrl: '/app/components/accounts/transfer/transfer.component.html'
 })
 export class TransferComponent implements OnInit{
 

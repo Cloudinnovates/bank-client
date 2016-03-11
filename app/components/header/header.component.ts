@@ -2,7 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 
 @Component({
     selector: 'art_header',
-    templateUrl: '/app/header/header.component.html'
+    templateUrl: '/app/components/header/header.component.html'
 })
 
 export class HeaderComponent implements OnInit {

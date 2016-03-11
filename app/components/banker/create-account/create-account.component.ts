@@ -1,11 +1,11 @@
 import {Component} from 'angular2/core';
 
-import {BankerService} from '../../services/banker.service';
-import {NewAccount} from '../../models/new-account';
-import {LoginStateService} from '../../services/login-state.service';
+import {BankerService} from '../../../services/banker.service';
+import {NewAccount} from '../../../models/new-account';
+import {LoginStateService} from '../../../services/login-state.service';
 
 @Component({
-	templateUrl: '/app/banker/create-account/create-account.component.html'
+	templateUrl: '/app/components/banker/create-account/create-account.component.html'
 })
 export class CreateAccountComponent {
 

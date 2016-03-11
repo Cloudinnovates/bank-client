@@ -1,10 +1,10 @@
 import {Component, OnInit} from 'angular2/core';
-import {AccountService} from '../../services/account.service';
-import {AccountOverview} from '../../models/account-overview';
-import {LoginStateService} from '../../services/login-state.service';
+import {AccountService} from '../../../services/account.service';
+import {AccountOverview} from '../../../models/account-overview';
+import {LoginStateService} from '../../../services/login-state.service';
 
 @Component({
-    templateUrl: '/app/accounts/account-overview/account-overview.component.html'
+    templateUrl: '/app/components/accounts/account-overview/account-overview.component.html'
 })
 export class AccountOverviewComponent implements OnInit {
 

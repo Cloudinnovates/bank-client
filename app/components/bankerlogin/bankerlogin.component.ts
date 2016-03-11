@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {BankerService} from '../services/banker.service';
-import {LoginInfo} from '../models/login-info';
+import {BankerService} from '../../services/banker.service';
+import {LoginInfo} from '../../models/login-info';
 
 @Component({
-    templateUrl: '/app/bankerlogin/bankerlogin.component.html'
+    templateUrl: '/app/components/bankerlogin/bankerlogin.component.html'
 })
 export class BankerloginComponent {
 
