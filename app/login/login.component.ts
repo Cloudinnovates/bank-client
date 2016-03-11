@@ -11,18 +11,10 @@ export class LoginComponent {
 	
 	username: String;
 	password: String;
-	accountId: String;
-	accountPassword: String;
 	loginInfo: LoginInfo;
 	errorMessage: String;
 
 	constructor(private router: Router, private _accountService: AccountService) { }
-
-	ngOnInit() {
-		this.accountId = "56dfd63f58596ec835c4b76f";
-		this.accountPassword = "sppvte29";
-		
-	}
 
 	login() {
 		this._accountService.login(this.username, this.password)
