@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {NgSwitch, NgSwitchWhen, NgSwitchDefault} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import 'rxjs/Rx';
@@ -31,13 +31,17 @@ import {LoginInfo} from './models/login-info';
 		{ path: '/bankerlogin', name: 'Bankerlogin', component: BankerloginComponent },
 		{ path: '/accountdetail', name: 'AccountDetail', component: AccountDetailComponent },
 		{ path: '/accountoverview', name: 'AccountOverview', component: AccountOverviewComponent },
-		{ path: '/transfert', name: 'Transfert', component: TransferComponent },
+		{ path: '/transfer', name: 'Transfert', component: TransferComponent },
 		{ path: '/createaccount', name: 'CreateAccount', component: CreateAccountComponent }
 ])
-export class AppComponent{ 
+export class AppComponent implements OnInit{ 
 	loginInfo: LoginInfo;
 	errorMessage: String;
 	constructor(private _router: Router, private _accountService: AccountService, private _loginStateService: LoginStateService) { }	
+
+	ngOnInit(){
+		this._loginStateService.updateLoginStatusFromServer().subscribe();
+	}
 
 	logout() {
 		this._accountService.logout()

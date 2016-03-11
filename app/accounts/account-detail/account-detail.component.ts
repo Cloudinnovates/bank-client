@@ -13,6 +13,7 @@ export class AccountDetailComponent implements OnInit{
 	constructor(private _accountService: AccountService, private _loginStateService: LoginStateService) { }
 
 	ngOnInit(){
+		this._loginStateService.isAuthOrRedirect('client');
 		this.getAccountDetail();
 	}
 
@@ -20,10 +21,15 @@ export class AccountDetailComponent implements OnInit{
 		this._accountService.getAccountDetail(this._loginStateService.account)
 			.subscribe(
 			accountDetail => {
-				this.accountDetail = accountDetail;
-				if(!this.accountDetail){
+				if (!accountDetail) {
 					this.errorMessage = 'An error appended';
 				}
+				else if (typeof (accountDetail.success) !== 'undefined' && !accountDetail.success) {
+					this.errorMessage = accountDetail.message;
+				}
+				else
+					this.accountDetail = accountDetail;
+				
 			},
 			error => this.errorMessage = <any>error);
 	}
