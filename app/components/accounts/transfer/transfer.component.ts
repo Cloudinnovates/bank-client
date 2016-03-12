@@ -11,7 +11,7 @@ export class TransferComponent implements OnInit{
 	target: String;
 	amount: number;
 	info: Info;
-	erroMessage: String;
+	errorMessage: String;
 
 	constructor(private _accountService: AccountService,
 		private _loginStateService: LoginStateService) { }
@@ -21,15 +21,23 @@ export class TransferComponent implements OnInit{
 	}
 
 	transfer(){
-		this._accountService.transfer(this.target, this.amount).subscribe(
-		info => {
-			if(!info.success){
-				this.erroMessage = info.message;
-			}
-			else {
-				this.info = info;
-			}
-		},
-		errorMessage => this.erroMessage = errorMessage);
+
+		if(isNaN(this.amount)){
+			this.errorMessage = 'Amount must be a number';
+		}
+		else {
+			this.errorMessage = '';
+
+			this._accountService.transfer(this.target, this.amount).subscribe(
+				info => {
+					if(!info.success){
+						this.errorMessage = info.message;
+					}
+					else {
+						this.info = info;
+					}
+				},
+				errorMessage => this.errorMessage = errorMessage);
+		}
 	}
 }
